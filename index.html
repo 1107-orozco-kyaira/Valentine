@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Be My Valentine?</title>
+  <style>
+    body {
+      background-color: #f5bbcc;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    img {
+      max-width: 250px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: #5a2a3a;
+    }
+
+    button {
+      font-size: 18px;
+      padding: 10px 25px;
+      margin: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    #yesBtn {
+      background-color: #ff5c8a;
+      color: white;
+      transition: transform 0.2s;
+    }
+
+    #noBtn {
+      background-color: #ffffff;
+      color: #ff5c8a;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Replace the src with your own image link -->
+    <img src="https://i.imgur.com/8Km9tLL.png" alt="Cute image">
+
+    <h1 id="question">Will you be my Valentine?</h1>
+
+    <button id="yesBtn" onclick="yesClicked()">Yes</button>
+    <button id="noBtn" onclick="noClicked()">No</button>
+  </div>
+
+  <script>
+    let noCount = 0;
+    let yesScale = 1;
+
+    function noClicked() {
+      noCount++;
+      yesScale += 0.3;
+      document.getElementById("yesBtn").style.transform = `scale(${yesScale})`;
+
+      if (noCount < 5) {
+        document.getElementById("question").innerText = "Are you sure?";
+      } else {
+        document.getElementById("question").innerText = "Maybe next year...";
+        document.getElementById("noBtn").style.display = "none";
+      }
+    }
+
+    function yesClicked() {
+      document.body.innerHTML = `
+        <div style="text-align:center;">
+          <h1>YAY!!! :3</h1>
+          <p>I LOVE YOU HAPPY VALENTINE'S DAY!!!</p>
+        </div>
+      `;
+    }
+  </script>
+
+</body>
+</html>
