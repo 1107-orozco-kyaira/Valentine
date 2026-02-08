@@ -46,7 +46,6 @@
 #yesBtn {
   background-color: #ff5c8a;
   color: white;
-  transition: transform 0.2s;
   animation: wiggle 1.5s infinite;
 
 }
@@ -54,7 +53,6 @@
     #yesBtn {
       background-color: #ff5c8a;
       color: white;
-      transition: transform 0.2s;
     }
 
     #noBtn {
@@ -75,35 +73,47 @@
     <button id="noBtn" onclick="noClicked()">No</button>
   </div>
   
-  <audio id="yesSound" src="yay.mp3"></audio>
+  <audio id="yesSound" src="yay.mp3.mp3"></audio>
 
   <script>
     let noCount = 0;
     let yesScale = 1;
 
     function noClicked() {
-      noCount++;
-      yesScale += 0.3;
-      document.getElementById("yesBtn").style.transform = `scale(${yesScale})`;
+let noCount = 0;
+let yesFontSize = 18;
 
-      if (noCount < 5) {
-        document.getElementById("question").innerText = "Are you sure?";
-      } else {
-        document.getElementById("question").innerText = "Maybe next year...";
-        document.getElementById("noBtn").style.display = "none";
-      }
-    }
+function noClicked() {
+  noCount++;
+  yesFontSize += 6;
 
-   function yesClicked() {
-  document.getElementById("yesSound").play();
+  const yesBtn = document.getElementById("yesBtn");
+  yesBtn.style.fontSize = yesFontSize + "px";
 
-  document.body.innerHTML = `
-    <div style="text-align:center;">
-      <h1>YAY!!! :3</h1>
-      <p>I love you so much baby! Happy Valentine's Day</p>
-    </div>
-  `;
+  if (noCount < 5) {
+    document.getElementById("question").innerText = "Are you sure?";
+  } else {
+    document.getElementById("question").innerText = "Maybe next year...";
+    document.getElementById("noBtn").style.display = "none";
+  }
 }
+
+
+  function yesClicked() {
+  const sound = document.getElementById("yesSound");
+  sound.currentTime = 0;
+  sound.play();
+
+  setTimeout(() => {
+    document.body.innerHTML = `
+      <div style="text-align:center;">
+        <h1>YAY!!! :3</h1>
+        <p>I love you so much baby! Let's have an awesome day ^-^</p>
+      </div>
+    `;
+  }, 300);
+}
+
 
   </script>
 
