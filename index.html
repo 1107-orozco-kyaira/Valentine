@@ -91,15 +91,18 @@
     sound.currentTime = 0;
     sound.play();
 
-    // Replace only the container content to keep audio alive
-    const container = document.querySelector(".container");
-    container.innerHTML = `
-      <img src="yes.png" alt="Love" style="max-width:200px; margin-bottom:20px;">
-      <h1>YAY!!! :3</h1>
-      <p>I love you so much baby! Let's have an awesome day ^-^</p>
-    `;
+    setTimeout(() => {
+      document.body.innerHTML = `
+        <div style="text-align:center;">
+          <img src="yes.png" alt="Love" style="max-width:200px; margin-bottom:20px;">
+          <h1>YAY!!! :3</h1>
+          <p>I love you so much baby! Let's have an awesome day ^-^</p>
+        </div>
+      `;
+    }, 300);
   }
 </script>
+
 
 </body>
 </html>
