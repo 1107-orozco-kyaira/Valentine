@@ -74,6 +74,8 @@
     <button id="yesBtn" onclick="yesClicked()">Yes</button>
     <button id="noBtn" onclick="noClicked()">No</button>
   </div>
+  
+  <audio id="yesSound" src="yay.mp3"></audio>
 
   <script>
     let noCount = 0;
@@ -92,14 +94,17 @@
       }
     }
 
-    function yesClicked() {
-      document.body.innerHTML = `
-        <div style="text-align:center;">
-          <h1>YAY!!! :3</h1>
-          <p>I LOVE YOU HAPPY VALENTINE'S DAY!!!</p>
-        </div>
-      `;
-    }
+   function yesClicked() {
+  document.getElementById("yesSound").play();
+
+  document.body.innerHTML = `
+    <div style="text-align:center;">
+      <h1>YAY!!! :3</h1>
+      <p>I love you so much baby! Happy Valentine's Day</p>
+    </div>
+  `;
+}
+
   </script>
 
 </body>
