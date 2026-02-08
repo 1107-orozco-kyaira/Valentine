@@ -35,6 +35,21 @@
       border-radius: 8px;
       cursor: pointer;
     }
+  @keyframes wiggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+  75% { transform: rotate(-3deg); }
+  100% { transform: rotate(0deg); }
+}
+
+#yesBtn {
+  background-color: #ff5c8a;
+  color: white;
+  transition: transform 0.2s;
+  animation: wiggle 1.5s infinite;
+
+}
 
     #yesBtn {
       background-color: #ff5c8a;
