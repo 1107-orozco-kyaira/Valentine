@@ -67,40 +67,42 @@
 
   <audio id="yesSound" src="yay.mp3" preload="auto"></audio>
 
-  <script>
-    let noCount = 0;
-    let yesFontSize = 18;
+ <script>
+  let noCount = 0;
+  let yesFontSize = 18;
 
-    const yesBtn = document.getElementById('yesBtn');
-    const noBtn = document.getElementById('noBtn');
-    const question = document.getElementById('question');
-    const container = document.querySelector('.container');
-    const sound = document.getElementById('yesSound');
+  function noClicked() {
+    noCount++;
+    yesFontSize += 6;
 
-    noBtn.addEventListener('click', () => {
-      noCount++;
-      yesFontSize += 6;
-      yesBtn.style.fontSize = yesFontSize + 'px';
+    const yesBtn = document.getElementById("yesBtn");
+    yesBtn.style.fontSize = yesFontSize + "px";
 
-      if (noCount < 5) {
-        question.innerText = "Are you sure?";
-      } else {
-        question.innerText = "Maybe next year...";
-        noBtn.style.display = 'none';
-      }
-    });
+    if (noCount < 5) {
+      document.getElementById("question").innerText = "Are you sure?";
+    } else {
+      document.getElementById("question").innerText = "Maybe next year...";
+      document.getElementById("noBtn").style.display = "none";
+    }
+  }
 
-    yesBtn.addEventListener('click', () => {
-      sound.currentTime = 0;
-      sound.play();
+  function yesClicked() {
+    const sound = document.getElementById("yesSound");
+    sound.currentTime = 0;
+    sound.play();
 
-      container.innerHTML = `
-        <img src="yes.png" alt="Love" style="max-width:200px; margin-bottom:20px;">
-        <h1>YAY!!! :3</h1>
-        <p>I love you so much baby! Let's have an awesome day ^-^</p>
+    setTimeout(() => {
+      document.body.innerHTML = `
+        <div style="text-align:center;">
+          <img src="yes.png" alt="Love" style="max-width:200px; margin-bottom:20px;">
+          <h1>YAY!!! :3</h1>
+          <p>I love you so much baby! Let's have an awesome day ^-^</p>
+        </div>
       `;
-    });
-  </script>
+    }, 300);
+  }
+</script>
+
 
 </body>
 </html>
