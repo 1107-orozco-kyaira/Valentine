@@ -61,8 +61,8 @@
   <div class="container">
     <img src="valentines.png" alt="Cute image">
     <h1 id="question">Will you be my Valentine?</h1>
-    <button id="yesBtn" onclick="yesClicked()">Yes</button>
-    <button id="noBtn" onclick="noClicked()">No</button>
+    <button id="yesBtn">Yes</button>
+    <button id="noBtn">No</button>
   </div>
 
   <audio id="yesSound" src="yay.mp3" preload="auto"></audio>
@@ -71,34 +71,35 @@
     let noCount = 0;
     let yesFontSize = 18;
 
-    function noClicked() {
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+    const question = document.getElementById('question');
+    const container = document.querySelector('.container');
+    const sound = document.getElementById('yesSound');
+
+    noBtn.addEventListener('click', () => {
       noCount++;
       yesFontSize += 6;
-
-      const yesBtn = document.getElementById("yesBtn");
-      yesBtn.style.fontSize = yesFontSize + "px";
+      yesBtn.style.fontSize = yesFontSize + 'px';
 
       if (noCount < 5) {
-        document.getElementById("question").innerText = "Are you sure?";
+        question.innerText = "Are you sure?";
       } else {
-        document.getElementById("question").innerText = "Maybe next year...";
-        document.getElementById("noBtn").style.display = "none";
+        question.innerText = "Maybe next year...";
+        noBtn.style.display = 'none';
       }
-    }
+    });
 
-    function yesClicked() {
-      const sound = document.getElementById("yesSound");
+    yesBtn.addEventListener('click', () => {
       sound.currentTime = 0;
       sound.play();
 
-      // Replace container content instead of body to keep audio alive
-      const container = document.querySelector('.container');
       container.innerHTML = `
         <img src="yes.png" alt="Love" style="max-width:200px; margin-bottom:20px;">
         <h1>YAY!!! :3</h1>
         <p>I love you so much baby! Let's have an awesome day ^-^</p>
       `;
-    }
+    });
   </script>
 
 </body>
