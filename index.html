@@ -86,22 +86,23 @@
     }
   }
 
-  function yesClicked() {
-    const sound = document.getElementById("yesSound");
-    sound.currentTime = 0;
-    sound.play();
+ function yesClicked() {
+  const sound = document.getElementById("yesSound");
+  sound.currentTime = 0;
+  sound.play();
 
-    setTimeout(() => {
-      document.body.innerHTML = `
-        <div style="text-align:center;">
-          <img src="yes.png" alt="Love" style="max-width:200px; margin-bottom:20px;">
-          <h1>YAY!!! :3</h1>
-          <p>I love you so much baby! Let's have an awesome day ^-^</p>
-        </div>
-      `;
-    }, 300);
-  }
-</script>
+  // Wait until sound finishes (or a fixed time) before changing page
+  setTimeout(() => {
+    document.body.innerHTML = `
+      <div style="text-align:center;">
+        <img src="yes.png" alt="Love" style="max-width:200px; margin-bottom:20px;">
+        <h1>YAY!!! :3</h1>
+        <p>I love you so much baby! Let's have an awesome day ^-^</p>
+      </div>
+    `;
+  }, 600); // 600ms or the duration of your sound clip
+}
+
 
 
 
