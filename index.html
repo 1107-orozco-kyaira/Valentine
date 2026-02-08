@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Be My Valentine?</title>
   <style>
     body {
@@ -35,20 +35,20 @@
       border-radius: 8px;
       cursor: pointer;
     }
-  @keyframes wiggle {
-  0% { transform: rotate(0deg); }
-  25% { transform: rotate(-3deg); }
-  50% { transform: rotate(3deg); }
-  75% { transform: rotate(-3deg); }
-  100% { transform: rotate(0deg); }
-}
 
-#yesBtn {
-  background-color: #ff5c8a;
-  color: white;
-  animation: wiggle 1.5s infinite;
+    @keyframes wiggle {
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(-3deg); }
+      50% { transform: rotate(3deg); }
+      75% { transform: rotate(-3deg); }
+      100% { transform: rotate(0deg); }
+    }
 
-}
+    #yesBtn {
+      background-color: #ff5c8a;
+      color: white;
+      animation: wiggle 1.5s infinite;
+    }
 
     #noBtn {
       background-color: #ffffff;
@@ -59,58 +59,48 @@
 <body>
 
   <div class="container">
-    <!-- Replace the src with your own image link -->
-    <img src="valentines.png" alt="Cute image">
-
+    <img src="valentines.png" alt="Cute image" />
     <h1 id="question">Will you be my Valentine?</h1>
-
     <button id="yesBtn" onclick="yesClicked()">Yes</button>
     <button id="noBtn" onclick="noClicked()">No</button>
   </div>
-  
-  <audio id="yesSound" src="yay.mp3.mp3"></audio>
+
+  <audio id="yesSound" src="yay.mp3" preload="auto"></audio>
 
   <script>
     let noCount = 0;
-    let yesScale = 1;
+    let yesFontSize = 18;
 
-let noCount = 0;
-let yesFontSize = 18;
+    function noClicked() {
+      noCount++;
+      yesFontSize += 6;
 
-function noClicked() {
-  noCount++;
-  yesFontSize += 6;
+      const yesBtn = document.getElementById("yesBtn");
+      yesBtn.style.fontSize = yesFontSize + "px";
 
-  const yesBtn = document.getElementById("yesBtn");
-  yesBtn.style.fontSize = yesFontSize + "px";
+      if (noCount < 5) {
+        document.getElementById("question").innerText = "Are you sure?";
+      } else {
+        document.getElementById("question").innerText = "Maybe next year...";
+        document.getElementById("noBtn").style.display = "none";
+      }
+    }
 
-  if (noCount < 5) {
-    document.getElementById("question").innerText = "Are you sure?";
-  } else {
-    document.getElementById("question").innerText = "Maybe next year...";
-    document.getElementById("noBtn").style.display = "none";
-  }
-}
+    function yesClicked() {
+      const sound = document.getElementById("yesSound");
+      sound.currentTime = 0;
+      sound.play();
 
-
-function yesClicked() {
-  const sound = document.getElementById("yesSound");
-  sound.currentTime = 0;
-  sound.play();
-
-  setTimeout(() => {
-    document.body.innerHTML = `
-      <div style="text-align:center;">
-        <img src="yes.png" alt="Love" style="max-width:200px; margin-bottom:20px;">
-        <h1>YAY!!! 💖🥰</h1>
-         <p>I love you so much baby! Let's have an awesome day ^-^</p>
-      </div>
-    `;
-  }, 300);
-}
-
-
-
+      setTimeout(() => {
+        document.body.innerHTML = `
+          <div style="text-align:center;">
+            <img src="yes.png" alt="Love" style="max-width:200px; margin-bottom:20px;">
+            <h1>YAY!!! :3</h1>
+            <p>I love you so much baby! Let's have an awesome day ^-^</p>
+          </div>
+        `;
+      }, 300);
+    }
   </script>
 
 </body>
