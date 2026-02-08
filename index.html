@@ -68,40 +68,14 @@
   <audio id="yesSound" src="yay.mp3" preload="auto"></audio>
 
 <script>
-  let noCount = 0;
-  let yesFontSize = 18;
-
-  function noClicked() {
-    noCount++;
-    yesFontSize += 6;
-
-    const yesBtn = document.getElementById("yesBtn");
-    yesBtn.style.fontSize = yesFontSize + "px";
-
-    if (noCount < 5) {
-      document.getElementById("question").innerText = "Are you sure?";
-    } else {
-      document.getElementById("question").innerText = "Maybe next year...";
-      document.getElementById("noBtn").style.display = "none";
-    }
-  }
-
   function yesClicked() {
-    const sound = document.getElementById("yesSound");
-    sound.currentTime = 0;
-    sound.play();
-
-    setTimeout(() => {
-      document.body.innerHTML = `
-        <div style="text-align:center;">
-          <img src="yes.png" alt="Love" style="max-width:200px; margin-bottom:20px;">
-          <h1>YAY!!! :3</h1>
-          <p>I love you so much baby! Let's have an awesome day ^-^</p>
-        </div>
-      `;
-    }, 300);
+    alert("YES clicked!");
+  }
+  function noClicked() {
+    alert("NO clicked!");
   }
 </script>
+
 
 </body>
 </html>
